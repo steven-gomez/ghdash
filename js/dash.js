@@ -17,7 +17,7 @@ var day = d3.time.format("%w"),
 
 var color = d3.scale.quantize()
     .domain([-.05, .05])
-    .range(d3.range(11).map(function(d) { return "q" + d + "-11"; }));
+    .range(d3.range(11).map(function(d) { return "q" + d + "-9"; }));
 
 var svg = d3.select("body").selectAll("svg")
     .data(d3.range(2009, 2012))
@@ -27,7 +27,7 @@ var svg = d3.select("body").selectAll("svg")
   .enter().append("svg")
     .attr("width", width)
     .attr("height", height)
-    .attr("class", "RdYlGn")
+    .attr("class", "YlOrRd")
   .append("g")
     .attr("transform", "translate(" + ((width - cellSize * 53) / 2) + "," + (height - cellSize * 7 - 1) + ")");
 
@@ -50,7 +50,7 @@ rect.append("title")
     .text(function(d) { return d; });
     
 svg.selectAll(".dayLabel")
-    .data(function(d) { return d3.time.days(new Date(d, 0, 0, 1), new Date(d, 0, 7, 1)); })
+    .data(function(d) { return d3.time.days(new Date(d, 0, 0, 1), new Date(d, 0, 7, 1), 1); })
   .enter().append("text")
     .text(dayName)
     .attr("x", function(d, i) { 
